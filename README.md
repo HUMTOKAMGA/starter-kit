@@ -81,7 +81,7 @@ sequenceDiagram
 - **État**: NgRx (si utilisé)
 - **Tests**: Jest
 - **Validation**: @ts-rest
-- **UI Components**: Angular Material
+- **UI Components**: PrimeNg
 - **Routing**: Angular Router
 - **HTTP Client**: Angular HttpClient
 
