@@ -1,0 +1,136 @@
+<div class="create-user-container">
+  <p-card
+    class="create-user-card"
+    [style]="{ width: '100%', maxWidth: '600px' }"
+  >
+    <div class="card-header">
+      <h2>Create New User</h2>
+      <p class="subtitle">Fill in the details to create a new user account</p>
+    </div>
+
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="user-form">
+      <div class="form-grid">
+        <div class="field">
+          <label for="firstName">First Name</label>
+          <input
+            id="firstName"
+            type="text"
+            pInputText
+            formControlName="firstName"
+            [class.p-invalid]="
+              userForm.get('firstName')?.invalid &&
+              userForm.get('firstName')?.touched
+            "
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              userForm.get('firstName')?.invalid &&
+              userForm.get('firstName')?.touched
+            "
+          >
+            First name is required
+          </small>
+        </div>
+
+        <div class="field">
+          <label for="lastName">Last Name</label>
+          <input
+            id="lastName"
+            type="text"
+            pInputText
+            formControlName="lastName"
+            [class.p-invalid]="
+              userForm.get('lastName')?.invalid &&
+              userForm.get('lastName')?.touched
+            "
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              userForm.get('lastName')?.invalid &&
+              userForm.get('lastName')?.touched
+            "
+          >
+            Last name is required
+          </small>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            pInputText
+            formControlName="email"
+            [class.p-invalid]="
+              userForm.get('email')?.invalid && userForm.get('email')?.touched
+            "
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              userForm.get('email')?.invalid && userForm.get('email')?.touched
+            "
+          >
+            Please enter a valid email
+          </small>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            pInputText
+            formControlName="password"
+            [class.p-invalid]="
+              userForm.get('password')?.invalid &&
+              userForm.get('password')?.touched
+            "
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              userForm.get('password')?.invalid &&
+              userForm.get('password')?.touched
+            "
+          >
+            Password must be at least 6 characters
+          </small>
+        </div>
+
+        <div class="field">
+          <label for="role">Role</label>
+          <p-dropdown
+            id="role"
+            [options]="roles"
+            formControlName="role"
+            optionLabel="label"
+            optionValue="value"
+            [style]="{ width: '100%' }"
+          ></p-dropdown>
+        </div>
+
+        <div class="field checkbox-field">
+          <p-checkbox
+            formControlName="isActive"
+            [binary]="true"
+            label="Active User"
+          ></p-checkbox>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <p-button
+          type="submit"
+          label="Create User"
+          [loading]="loading"
+          [disabled]="userForm.invalid"
+          styleClass="p-button-raised p-button-primary"
+        ></p-button>
+      </div>
+    </form>
+  </p-card>
+</div>
+<p-toast></p-toast>

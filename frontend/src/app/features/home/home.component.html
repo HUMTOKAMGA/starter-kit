@@ -1,0 +1,47 @@
+<div class="dashboard">
+  <div class="sidebar"></div>
+  <div class="content">
+    <p-card header="Tontines actives">
+      <p>1 va</p>
+      <button pButton type="button" label="Voir mes groupes"></button>
+    </p-card>
+    <p-card header="Prochaine échéance">
+      <p>15 mai 2024</p>
+      <button
+        pButton
+        type="button"
+        label="Cotiser"
+        class="p-button-danger"
+      ></button>
+    </p-card>
+    <p-card header="Dernier bénéficiaire">
+      <div class="beneficiary">
+        <p-avatar
+          [style]="{ 'background-color': '#dee9fc', color: '#1a2551' }"
+          icon="pi pi-user"
+          shape="circle"
+        />
+        <p>Stéphane 1000 €</p>
+      </div>
+    </p-card>
+    <p-card header="Paiements en attente">
+      <p>Jean 200 € jusqu'au 12 juin 2024</p>
+    </p-card>
+    <p-card header="Cotisations">
+      <p>6 mai 2024 Nouveau membre joint des groupe</p>
+      <p>9 avr. 2024 Dernière bénéficiaire Sarah</p>
+    </p-card>
+    <p-card header="Statistiques">
+      <p>Total reçu 3000 €</p>
+      <p>Règlement 155 €</p>
+      <p-progressbar value="70"></p-progressbar>
+    </p-card>
+    <p-card header="Membres groupe">
+      <div class="members">
+        <img src="path/to/julie.jpg" alt="Julie" class="avatar" />
+        <img src="path/to/marcel.jpg" alt="Marcel" class="avatar" />
+        <img src="path/to/emma.jpg" alt="Emma" class="avatar" />
+      </div>
+    </p-card>
+  </div>
+</div>

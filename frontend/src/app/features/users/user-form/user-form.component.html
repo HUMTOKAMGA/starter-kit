@@ -1,0 +1,103 @@
+<form
+  [formGroup]="userForm"
+  (submit)="$event.preventDefault(); onSubmit()"
+  class="user-form"
+>
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input
+      id="firstName"
+      type="text"
+      pInputText
+      formControlName="firstName"
+      placeholder="Enter first name"
+      [class.ng-invalid]="isFieldInvalid('firstName')"
+    />
+    <small class="error-message" *ngIf="isFieldInvalid('firstName')">
+      {{ getErrorMessage("firstName") }}
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input
+      id="lastName"
+      type="text"
+      pInputText
+      formControlName="lastName"
+      placeholder="Enter last name"
+      [class.ng-invalid]="isFieldInvalid('lastName')"
+    />
+    <small class="error-message" *ngIf="isFieldInvalid('lastName')">
+      {{ getErrorMessage("lastName") }}
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input
+      id="email"
+      type="email"
+      pInputText
+      formControlName="email"
+      placeholder="Enter email"
+      [class.ng-invalid]="isFieldInvalid('email')"
+    />
+    <small class="error-message" *ngIf="isFieldInvalid('email')">
+      {{ getErrorMessage("email") }}
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <p-password
+      id="password"
+      formControlName="password"
+      [toggleMask]="true"
+      [feedback]="false"
+      placeholder="Enter password"
+      [class.ng-invalid]="isFieldInvalid('password')"
+    ></p-password>
+    <small class="error-message" *ngIf="isFieldInvalid('password')">
+      {{ getErrorMessage("password") }}
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label for="role">Role</label>
+    <p-dropdown
+      id="role"
+      formControlName="role"
+      [options]="roles"
+      placeholder="Select role"
+      [class.ng-invalid]="isFieldInvalid('role')"
+    ></p-dropdown>
+    <small class="error-message" *ngIf="isFieldInvalid('role')">
+      {{ getErrorMessage("role") }}
+    </small>
+  </div>
+
+  <div class="form-group">
+    <p-checkbox
+      formControlName="isActive"
+      [binary]="true"
+      label="Active"
+    ></p-checkbox>
+  </div>
+
+  <div class="form-actions">
+    <p-button
+      type="button"
+      label="Cancel"
+      (onClick)="onCancel()"
+      styleClass="p-button-secondary"
+    ></p-button>
+    <p-button
+      type="button"
+      label="Submit"
+      [disabled]="!userForm.valid || isLoading"
+      [loading]="isLoading"
+      (onClick)="onSubmit()"
+    ></p-button>
+  </div>
+</form>

@@ -1,0 +1,47 @@
+.container {
+    padding: 1rem;
+  }
+  
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -0.5rem;
+    margin-left: -0.5rem;
+  }
+  
+  .col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0.5rem;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .md\:col-4 {
+      flex: 0 0 33.333333%;
+      max-width: 33.333333%;
+    }
+    .md\:col-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .flex-column {
+    flex-direction: column;
+  }
+  
+  .gap-2 {
+    gap: 0.5rem;
+  }
+  
+  .align-items-center {
+    align-items: center;
+  }
+  
+  .ml-2 {
+    margin-left: 0.5rem;
+  }

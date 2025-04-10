@@ -1,0 +1,100 @@
+<div class="user-list-container">
+  <div class="header">
+    <h1>Users</h1>
+    <div class="actions">
+      <span class="p-input-icon-left">
+        <input
+          type="text"
+          pInputText
+          (input)="onSearch($event)"
+          placeholder="Search users..."
+        />
+      </span>
+      <p-button
+        label="Create new User"
+        icon="pi pi-plus"
+        (onClick)="showCreateModal()"
+      ></p-button>
+    </div>
+  </div>
+
+  <div class="table-container">
+    <div *ngIf="loading$ | async" class="loading-container">
+      <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+      <p>Loading users...</p>
+    </div>
+    <p-table
+      *ngIf="!(loading$ | async)"
+      [value]="(users$ | async) || []"
+      [paginator]="true"
+      [rows]="itemsPerPage"
+      [showCurrentPageReport]="true"
+      responsiveLayout="scroll"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} users"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [globalFilterFields]="['firstName', 'lastName', 'email']"
+      [globalFilter]="searchTerm"
+      [globalFilterMatchMode]="FilterMatchMode.CONTAINS"
+      [emptyMessage]="'No users found'"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-user>
+        <tr>
+          <td>{{ user.firstName }} {{ user.lastName }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <span [class]="'status-badge ' + getRoleSeverity(user.role)">
+              {{ user.role }}
+            </span>
+          </td>
+          <td>
+            <span
+              [class]="
+                'status-badge ' +
+                getStatusSeverity(user.isActive ? 'active' : 'inactive')
+              "
+            >
+              {{ user.isActive ? "Active" : "Inactive" }}
+            </span>
+          </td>
+          <td>
+            <div class="action-buttons">
+              <p-button
+                icon="pi pi-pencil"
+                (onClick)="onEditUser(user)"
+                styleClass="p-button-rounded p-button-text"
+              ></p-button>
+              <p-button
+                icon="pi pi-trash"
+                (onClick)="onDeleteUser(user)"
+                styleClass="p-button-rounded p-button-text p-button-danger"
+              ></p-button>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+<app-modal
+  [(visible)]="isCreateModalVisible"
+  (onHide)="hideCreateModal()"
+  title="Create New User"
+>
+  <app-user-form
+    (submit)="onCreateUser($event)"
+    (cancel)="hideCreateModal()"
+  ></app-user-form>
+</app-modal>
+
+<p-confirmDialog></p-confirmDialog>
+<p-toast></p-toast>

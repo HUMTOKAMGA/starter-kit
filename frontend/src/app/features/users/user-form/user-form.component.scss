@@ -1,0 +1,115 @@
+.user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  max-width: 500px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    label {
+      font-weight: 500;
+      color: #fff;
+      font-size: 0.9rem;
+    }
+
+    .error-message {
+      color: #f44336;
+      font-size: 0.8rem;
+      margin-top: 0.25rem;
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  :host ::ng-deep {
+    .p-inputtext,
+    .p-dropdown,
+    .p-password {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+      transition: all 0.3s ease;
+
+      &:hover {
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+
+      &:focus {
+        border-color: #2196f3;
+        box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+      }
+
+      &.ng-invalid {
+        border-color: #f44336;
+      }
+    }
+
+    .p-dropdown {
+      .p-dropdown-label {
+        color: #fff;
+      }
+
+      .p-dropdown-trigger {
+        color: #fff;
+      }
+
+      .p-dropdown-panel {
+        background: #1a1a1a;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+
+        .p-dropdown-items {
+          .p-dropdown-item {
+            color: #fff;
+
+            &:hover {
+              background: rgba(255, 255, 255, 0.1);
+            }
+          }
+        }
+      }
+    }
+
+    .p-password {
+      .p-password-input {
+        width: 100%;
+      }
+    }
+
+    .p-checkbox {
+      margin-top: 0.5rem;
+
+      .p-checkbox-box {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.1);
+
+        &.p-highlight {
+          background: #2196f3;
+          border-color: #2196f3;
+        }
+      }
+
+      .p-checkbox-label {
+        color: #fff;
+      }
+    }
+
+    .p-button {
+      min-width: 100px;
+    }
+  }
+} 
